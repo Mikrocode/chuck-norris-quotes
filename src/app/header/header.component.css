@@ -1,0 +1,12 @@
+.nav {
+  float:none;
+}
+
+.nav a {
+  color: #ff0000;
+}
+
+.nav .active a {
+  background: #ff0000;
+  color: #fff;
+}

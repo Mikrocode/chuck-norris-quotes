@@ -1,0 +1,15 @@
+<div class="cta">
+  <button class="button-big center" (click)="loadQuotes(10)">Load Quotes</button>
+</div>
+<div class="randomQuotes">
+  <ul class="list-group" *ngFor="let quote of quotes | async ; let i = index">
+    <li class="list-group-item"> <p [innerHTML]="quote.joke"> </p>
+      <hr>Id:{{ quote.id }} <br> <div *ngIf="(quote.categories.length>0&&quote.categories);
+          else nocategories">Categories: <span class="category">{{quote.categories}}</span>
+
+      </div> <ng-template #nocategories><span class="nocategories">No categories</span></ng-template>
+      <br>
+      <button (click)="onAddToFavorites(quote)"> Add to favorites </button>
+    </li>
+  </ul>
+</div>

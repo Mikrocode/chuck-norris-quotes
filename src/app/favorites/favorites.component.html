@@ -1,0 +1,16 @@
+<div class="container">
+  <button (click)="enabled?onAddRandomFavorite(randomAddFavoriteTime):stopRandomAddiction()"> <span *ngIf = 'enabled'>Add</span>  <span *ngIf = '!enabled'>Disable adding</span> a random favorite every {{ randomAddFavoriteTime / 1000}} secs </button>
+  <br>
+  <ul class="list-group" *ngIf = "favorites.length>0;else nofavorites" >
+    <li class="list-group-item" *ngFor="let favorite of favorites" >
+      <div>
+        id:{{favorite.id}}<br> <p [innerHTML]="favorite.joke"> </p><br><div *ngIf="(favorite.categories.length>0&&favorite.categories);
+          else nocategories">Categories: <span class="category">{{favorite.categories}}</span>
+      </div> <ng-template #nocategories><span class="nocategories">No categories</span></ng-template>
+        <br>
+        <button (click)="onRemoveFavorite(favorite)"> Remove from favorites </button>
+      </div>
+    </li>
+  </ul>
+  <ng-template #nofavorites>There are no favorites yet, please <a routerLink="../ten-random-quotes">add some to your list!</a></ng-template>
+</div>
